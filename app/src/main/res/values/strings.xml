@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Phish App 2019 Autumn</string>
+
+
+    <!-- Strings related to login -->
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_password_again">Retype Password</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_register_short">Register</string>
+    <string name="diaplay_header_title">Phish App Welcomes:</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

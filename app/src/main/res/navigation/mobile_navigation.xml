@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_success">
+
+    <fragment
+        android:id="@+id/nav_success"
+        android:name="instructor.tcss450.uw.edu.phishapp2019autumn.ui.SuccessFragment"
+        android:label="Welcome!"
+        tools:layout="@layout/fragment_success">
+        <argument
+            android:name="credentials"
+            app:argType="instructor.tcss450.uw.edu.phishapp.model.Credentials"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_blog"
+        android:name="instructor.tcss450.uw.edu.phishapp2019autumn.ui.BlogFragment"
+        android:label="Latest Blogs"
+        tools:layout="@layout/fragment_blog_list">
+        <action
+            android:id="@+id/action_nav_blog_to_nav_blog_post"
+            app:destination="@id/nav_blog_post" />
+        <argument
+            android:name="blogs"
+            app:argType="instructor.tcss450.uw.edu.phishapp2019autumn.model.BlogPost[]" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/nav_blog_post"
+        android:name="instructor.tcss450.uw.edu.phishapp2019autumn.ui.BlogPostFragment"
+        android:label="Blog Post"
+        tools:layout="@layout/fragment_blog_post" />
+    <action android:id="@+id/action_global_nav_blog" app:destination="@id/nav_blog" />
+    <fragment
+        android:id="@+id/nav_set"
+        android:name="instructor.tcss450.uw.edu.phishapp2019autumn.ui.SetListFragment"
+        android:label="Latest Set Lists"
+        tools:layout="@layout/fragment_setlist_list">
+        <argument
+            android:name="setLists"
+            app:argType="instructor.tcss450.uw.edu.phishapp2019autumn.model.SetList[]" />
+    </fragment>
+    <action android:id="@+id/action_global_setListFragment" app:destination="@id/nav_set" />
+</navigation>

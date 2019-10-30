@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="instructor.tcss450.uw.edu.phishapp2019autumn.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="instructor.tcss450.uw.edu.phishapp2019autumn.ui.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="instructor.tcss450.uw.edu.phishapp2019autumn.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" >
+        <argument
+            android:name="credentials"
+            app:argType="instructor.tcss450.uw.edu.phishapp.model.Credentials"
+            app:nullable="true" />
+        <argument
+            android:name="jwt"
+            app:argType="string"
+            android:defaultValue='""' />
+    </activity>
+</navigation>

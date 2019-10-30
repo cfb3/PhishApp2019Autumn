@@ -1,18 +1,22 @@
-package instructor.tcss450.uw.edu.phishapp2019autumn;
+package instructor.tcss450.uw.edu.phishapp2019autumn.ui;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import instructor.tcss450.uw.edu.phishapp.model.Credentials;
-
+import instructor.tcss450.uw.edu.phishapp2019autumn.HomeActivityArgs;
+import instructor.tcss450.uw.edu.phishapp2019autumn.R;
 
 
 public class SuccessFragment extends Fragment {
@@ -29,10 +33,6 @@ public class SuccessFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mCredentials = (Credentials) getArguments().getSerializable(
-                    getString(R.string.keys_intent_credentials));
-        }
     }
 
     @Override
@@ -44,18 +44,15 @@ public class SuccessFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        if (getArguments() != null) {
-            mCredentials = (Credentials) getArguments().getSerializable(
-                    getString(R.string.keys_intent_credentials));
-
-            ((TextView) getActivity().findViewById(R.id.text_display_email)).
-                    setText(mCredentials.getEmail());
-        }
-
+        HomeActivityArgs args = HomeActivityArgs.fromBundle(getArguments());
+        Credentials credentials = args.getCredentials();
+        ((TextView) getActivity().findViewById(R.id.text_display_email)).
+                setText(credentials.getEmail());
+        String jwt = args.getJwt();
+        Log.d("JWT", jwt);
     }
-
 
 }
